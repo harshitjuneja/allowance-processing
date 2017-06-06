@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>View All Requests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="Bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="Bootstrap/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Graph CSS -->
+    <link href="Bootstrap/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="jQuery/jquery-3.2.1.js"></script>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="Bootstrap/css/icon-font.min.css" type='text/css' />
+    <!----webfonts--->
+    <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript">
+        $.getJSON("http://localhost:8100/department/v1", function(json) {
+            $(function() {
+                $.each(json, function(i, item) {
+                    $('<tr>').append($('<td>').text(item.departmentId),
+                        $('<td>').text(item.departmentName),
+                        $('<td>').text(item.departmentCode),
+                        $('<td>').text(item.hod),
+                        $('<td>').text(item.description),
+                        $('<td>').text(item.status),
+                        $('<td>').text(item.departmentCordinator),
+                        $('<td>').text(item.parentDepartmentId)).appendTo(
+                        '#department_table');
+                });
+            });
+        });
+    </script>
+</head>
+
+<body class="sticky-header left-side-collapsed">
+    <section>
+
+        <!-- sidebar nav start-->
+        <div class="left-side sticky-left-side">
+            <div class="left-side-inner">
+                <ul class="nav nav-pills nav-stacked custom-nav">
+                    <li>
+                        <a href="index.html"> <i class="lnr lnr-home"></i> <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="codes.html"> <i class="lnr lnr-pencil"></i> <span>Create
+								Request</span>
+                        </a>
+                    </li>
+                    <li class="menu-list">
+                        <a href="#"> <i class="lnr lnr-indent-increase"></i> <span>Edit Request</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forms.html"> <i class="lnr lnr-spell-check"></i>
+                            <span>Approve Request</span>
+                        </a>
+                    </li>
+                    <li class="menu-list">
+                        <a href="#"> <i class="lnr lnr-book"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="media.html"> <i class="lnr lnr-select"></i> <span>Invoice</span>
+                        </a>
+                    </li>
+                    <li class="menu-list">
+                        <a href="#"> <i class="lnr lnr-cog"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- sidebar nav end-->
+
+        <!-- main content start-->
+        <div class="main-content main-content4">
+
+            <!-- header-starts -->
+            <div class="header-section">
+            
+                <!--toggle button start-->
+                <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+                <!--toggle button end-->
+
+                <!--notification menu start -->
+                <div class="menu-right">
+                    <div class="user-panel-top">
+                        <div class="profile_details_left">
+                            <ul class="nofitications-dropdown">
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+										class="fa fa-bell"></i><span class="badge blue">3</span></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 3 new notification</h3>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img">
+                                                    <img src="images/1.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                    <p>
+                                                        <span>1 hour ago</span>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li class="odd">
+                                            <a href="#">
+                                                <div class="user_img">
+                                                    <img src="images/1.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                    <p>
+                                                        <span>1 hour ago</span>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img">
+                                                    <img src="images/1.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                    <p>
+                                                        <span>1 hour ago</span>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all notification</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- notification menu end -->
+
+            </div>
+            <!-- header-ends -->
+            
+            <!-- Department table start -->
+            <div id="page-wrapper">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <h3 class="blank1">View records</h3>
+                    </div>
+                 <!--     <div class="row">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="AdminViewAllRequestsPage.html">View all
+									requests</a>
+                                <li><a href="AdminViewPendingRequestsPage.html">View
+									pending requests</a>
+                        </ul>
+                    </div> -->
+                    <div class="row">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <h2>All Departments</h2>
+                            </div>
+                            <div class="panel-body no-padding" style="display: block;">
+                                <table id="department_table" class="table table-bordered">
+                                    <tr>
+                                        <th>Dept ID</th>
+                                        <th>Dept Name</th>
+                                        <th>Dept Code</th>
+                                        <th>HOD</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Dept Coordinator</th>
+                                        <th>Parent Dept Id</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Department table ends -->
+        </div>
+        </div>
+
+        <!-- footer section start-->
+        <footer>
+            <p>&copy 2017 Fidelity International. All Rights Reserved</p>
+        </footer>
+        <!-- footer section end-->
+
+    </section>
+
+    <script src="Bootstrap/js/jquery.nicescroll.js"></script>
+    <script src="Bootstrap/js/scripts.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

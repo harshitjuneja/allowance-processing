@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<!-- Website CSS style -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="style.css">
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+		<title>Admin</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row main">
+				<div class="main-login main-center">
+				<h5>Add Department</h5>
+					<form class="" method="post" action="#" id="deptform">
+						
+						<div class="form-group" >
+							<label for="dept_id" class="cols-sm-2 control-label">Department Id</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Dept ID"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="dept_name" class="cols-sm-2 control-label">Department Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Dept Name"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="dept_code" class="cols-sm-2 control-label">Department Code</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Dept Code"/>
+								</div>
+							</div>
+						</div>
+
+                        <div class="form-group">
+							<label for="hod" class="cols-sm-2 control-label">Department HOD</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Dept HOD"/>
+								</div>
+							</div>
+						</div>
+
+                        <div class="form-group">
+							<label for="description" class="cols-sm-2 control-label">Department Description</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Dept Description"/>
+								</div>
+							</div>
+						</div>
+
+                        <div class="form-group">
+							<label for="status" class="cols-sm-2 control-label">Department Status</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Dept Status"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="dept_coordinator" class="cols-sm-2 control-label">Department Coordinator</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Dept Coordinator"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="parent_dept_id" class="cols-sm-2 control-label">Parent Dept Id</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Parent Dept Id"/>
+								</div>
+							</div>
+						</div>
+
+
+
+						
+						<div class="form-group ">
+<button type='submit'>Save Department </button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+		<script > function onSubmit( form ){
+			  var data = JSON.stringify( $(form).serializeArray() ); //  <-----------
+
+			  console.log( data );
+			  return false; //don't submit
+			}</script>
+
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

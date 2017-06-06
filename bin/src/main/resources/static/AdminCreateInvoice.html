@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Generate Invoice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- Bootstrap Core CSS -->
+<link href="/Bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="/Bootstrap/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="/Bootstrap/css/font-awesome.css" rel="stylesheet">
+<!-- lined-icons -->
+<link rel="stylesheet" href="/Bootstrap/css/icon-font.min.css" type='text/css' />
+<!----webfonts--->
+<link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+
+<script src="/Bootstrap/js/jquery-1.10.2.min.js"></script>
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<script type="text/javascript">
+
+	$(document).ready( function() {
+		$("#InvoicePeriodDiv").hide();
+		$('#DepartmentNameDiv').hide();
+		$("#InvoiceYear").change( function() {
+			var selectedVal = $(this).find(':selected').val();
+			var selectedText = $(this).find(':selected').text();
+			if (selectedText == "2017" || selectedText == "2016") {
+				$("#InvoicePeriodDiv").show();
+				$.getJSON("http://localhost:8100/admin/invoice/" + selectedText, function(json) {
+					var htmlCodePeriod = "";
+					var dropdown = $('#InvoicePeriod');
+					dropdown.empty();
+					$(function() { 
+						htmlCodePeriod += '<option value="">Select</option>';
+						$.each( json, function( i, item) {
+							var value = item.periodName;
+							htmlCodePeriod += '<option value="'+value+'">' + value + '</option>';
+						});
+					});
+																	
+					$(dropdown).append(htmlCodePeriod);
+				});
+
+				$('#DepartmentNameDiv').show();
+				$.getJSON("http://localhost:8100/admin/invoice/department", function(json) {
+					var htmlCodeDepartment = "";
+					var dropdown = $('#DepartmentName');
+					dropdown.empty();
+					$(function() {
+						htmlCodeDepartment += '<option value="">Select</option>';
+						$.each( json, function( i, item) {
+							var value = item.departmentName;
+							htmlCodeDepartment += '<option value="'+value+'">' + value + '</option>';
+						});
+					});
+					$(dropdown).append(htmlCodeDepartment);
+				});
+			} else {
+				$("#InvoicePeriodDiv").hide();
+				$('#DepartmentNameDiv').hide();
+			}
+		});
+	});
+</script>
+
+</head>
+
+<body class="sticky-header left-side-collapsed" onload="initMap()">
+
+	<section>
+		<!-- left side start-->
+		<div class="left-side sticky-left-side">
+
+			<!--logo and iconic logo start-->
+			<div class="logo">
+				<h1>
+					<a href="index.html">Easy <span>Admin</span></a>
+				</h1>
+			</div>
+			<div class="logo-icon text-center">
+				<a href="index.html"><i class="lnr lnr-home"></i> </a>
+			</div>
+
+			<!--logo and iconic logo end-->
+			<div class="left-side-inner">
+
+				<!-- sidebar nav start-->
+				<div class="left-side sticky-left-side">
+					<div class="left-side-inner">
+						<ul class="nav nav-pills nav-stacked custom-nav">
+							<li><a href="index.html"> <i class="lnr lnr-home"></i> <span>Home</span>
+							</a></li>
+							<li><a href="codes.html"> <i class="lnr lnr-pencil"></i>
+									<span>Create Request</span>
+							</a></li>
+							<li class="menu-list"><a href="#"> <i
+									class="lnr lnr-indent-increase"></i> <span>Edit Request</span>
+							</a></li>
+							<li><a href="forms.html"> <i class="lnr lnr-spell-check"></i>
+									<span>Approve Request</span>
+							</a></li>
+							<li class="menu-list"><a href="#"> <i
+									class="lnr lnr-book"></i> <span>Reports</span>
+							</a></li>
+							<li><a href="media.html"> <i class="lnr lnr-select"></i>
+									<span>Invoice</span>
+							</a></li>
+							<li class="menu-list"><a href="#"> <i
+									class="lnr lnr-cog"></i> <span>Logout</span>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- sidebar nav end-->
+			</div>
+		</div>
+		<!-- left side end-->
+
+		<!-- main content start-->
+		<div class="main-content main-content3">
+			<!-- header-starts -->
+			<div class="header-section">
+
+				<!--toggle button start-->
+				<a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+				<!--toggle button end-->
+
+				<!--notification menu start -->
+				<div class="menu-right">
+					<div class="user-panel-top">
+						<div class="profile_details_left">
+							<ul class="nofitications-dropdown">
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="false"><i
+										class="fa fa-bell"></i><span class="badge blue">3</span></a>
+									<ul class="dropdown-menu">
+										<li>
+											<div class="notification_header">
+												<h3>You have 3 new notification</h3>
+											</div>
+										</li>
+										<li>
+											<div class="notification_bottom">
+												<a href="#">See all notification</a>
+											</div>
+										</li>
+									</ul></li>
+
+								<div class="clearfix"></div>
+							</ul>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<!-- notification menu end -->
+
+			</div>
+			<!-- header-ends -->
+
+			<!-- Main content starts -->
+			<div id="page-wrapper">
+				<div class="row">
+					<h3 class="blank1">Create Invoice</h3>
+				</div>
+
+				<form class="form-horizontal">
+					<div class="form-group row">
+						<label for="invoiceYear" class="col-sm-2 control-label">Select
+							year : </label>
+						<div class="col-sm-4">
+							<select name="InvoiceYear" id="InvoiceYear" class="form-control1">
+								<option value="">Select</option>
+								<option value="2017">2017</option>
+								<option value="2016">2016</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group row" id="InvoicePeriodDiv">
+						<label id="demo" for="invoicePeriod" class="col-sm-2 control-label">Select period</label>
+						<div class="col-sm-4">
+							<select name="InvoicePeriod" id="InvoicePeriod" class="form-control1">
+								<option value="">Select</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group row" id="DepartmentNameDiv">
+						<label id="demo" for="departmentName" class="col-sm-2 control-label">Select department</label>
+						<div class="col-sm-4">
+							<select name="DepartmentName" id="DepartmentName" class="form-control1">
+								<option value="">Select</option>
+							</select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Main content ends -->
+
+		</div>
+		</div>
+
+		<!-- footer section start-->
+		<footer>
+			<p>&copy 2017 Fidelity International. All Rights Reserved</p>
+		</footer>
+		<!-- footer section end-->
+	</section>
+
+	<script src="/Bootstrap/js/jquery.nicescroll.js"></script>
+	<script src="/Bootstrap/js/scripts.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/Bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
